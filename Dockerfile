@@ -13,3 +13,16 @@ RUN apt-get update && apt-get install -y \
     python3-dev \
     python3-pip && \
     rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y \
+    git && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+COPY nvim /root/.config/nvim
+
+# RUN nvim --headless \
+#     -c 'autocmd User PackerComplete quitall' \
+#     -c 'PackerSync'
