@@ -9,26 +9,6 @@ return require("packer").startup({
                 require("plugins.nvim-lightbulb")
             end,
         })
-        use({
-            "nvim-treesitter/nvim-treesitter",
-            run = ":TSUpdate",
-            config = function()
-                require("plugins.treesitter")
-            end,
-        })
-        use({
-            "neovim/nvim-lspconfig",
-            config = function()
-                require("plugins.nvim-lspconfig")
-            end,
-        })
-
-        --[[ use({
-			"hrsh7th/nvim-compe",
-			config = function()
-				require("plugins.nvim-compe")
-			end,
-		}) ]]
 
         use({ "hrsh7th/vim-vsnip" })
         use({ "hrsh7th/vim-vsnip-integ" })
@@ -36,7 +16,7 @@ return require("packer").startup({
         use({ "hrsh7th/cmp-buffer" })
         use({ "hrsh7th/cmp-path" })
         use({ "hrsh7th/cmp-cmdline" })
-        use({ "hrsh7th/cmp-vsnip" })
+        -- use({ "hrsh7th/cmp-vsnip" })
 
         use({
             "hrsh7th/nvim-cmp",
@@ -65,7 +45,13 @@ return require("packer").startup({
             requires = { { "nvim-lua/plenary.nvim" } },
         })
 
-        use({ "npxbr/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
+        use({
+            "npxbr/gruvbox.nvim",
+            requires = { "rktjmp/lush.nvim" },
+            config = function()
+                -- vim.cmd("colorscheme gruvbox")
+            end,
+        })
 
         use({
             "folke/trouble.nvim",
@@ -111,13 +97,13 @@ return require("packer").startup({
             end,
         })
 
-        use({
+        --[[ use({
             "rcarriga/nvim-dap-ui",
             requires = { "mfussenegger/nvim-dap" },
             config = function()
                 require("plugins.nvim-dap-ui")
             end,
-        })
+        }) ]]
 
         use({ "b3nj5m1n/kommentary" })
 
@@ -144,7 +130,7 @@ return require("packer").startup({
 
         use({ "rafamadriz/friendly-snippets" })
 
-        use({ "sakhnik/nvim-gdb", run = ":!./install.sh" })
+        -- use({ "sakhnik/nvim-gdb", run = ":!./install.sh" })
 
         use({
             "kyazdani42/nvim-tree.lua",
@@ -164,6 +150,21 @@ return require("packer").startup({
         use({ "ilidar/git-tree.nvim" })
 
         use({ "chr4/nginx.vim" })
+
+        use({
+            "nvim-treesitter/nvim-treesitter",
+            run = ":TSUpdate",
+            config = function()
+                require("plugins.treesitter")
+            end,
+        })
+
+        use({
+            "neovim/nvim-lspconfig",
+            config = function()
+                require("plugins.nvim-lspconfig")
+            end,
+        })
     end,
     config = {
         display = {

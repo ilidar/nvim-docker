@@ -23,6 +23,6 @@ RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim \
 
 COPY nvim /root/.config/nvim
 
-# RUN nvim --headless \
-#     -c 'autocmd User PackerComplete quitall' \
-#     -c 'PackerSync'
+RUN nvim --headless \
+  -c "autocmd User PackerCompileDone quitall" \
+  -c "PackerSync"
