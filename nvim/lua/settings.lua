@@ -43,7 +43,7 @@ opt.wrap = false -- Disable line wrap
 -- Colors and Fonds
 ------------------------------------------------------------
 cmd("syntax on")
--- cmd("colorscheme gruvbox")
+cmd("colorscheme gruvbox")
 opt.background = "dark"
 opt.encoding = "utf8"
 opt.colorcolumn = "120"
