@@ -36,6 +36,12 @@ COPY nvim /root/.config/nvim
 #   -c "autocmd User PackerCompileDone sleep 100m | quitall" \
 #   -c "PackerSync"
 
+RUN echo "00004"
+
 RUN nvim --headless \
   -c "autocmd User PackerCompileDone quitall" \
   -c "PackerSync"
+
+# RUN nvim --headless ' +TSInstall -sync all'
+RUN nvim --headless \
+    ' +TSInstall -sync all' +qa
