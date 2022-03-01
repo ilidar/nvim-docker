@@ -18,30 +18,20 @@ RUN apt-get update && apt-get install -y \
     git && \
     rm -rf /var/lib/apt/lists/*
 
-RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+RUN mkdir -p /root/.local/share/nvim/site/pack/plugins/opt && \
+    mkdir -p /root/.local/share/nvim/site/pack/plugins/start
+
+RUN git clone https://github.com/nvim-treesitter/nvim-treesitter \
+    /root/.local/share/nvim/site/pack/plugins/start/nvim-treesitter
+
+# RUN nvim --headless ' +TSInstallSync all' +qa
+RUN nvim --headless -c 'TSInstallSync all' -c 'qall'
+
+RUN git clone https://github.com/kyazdani42/nvim-web-devicons  \
+    /root/.local/share/nvim/site/pack/plugins/start/nvim-web-devicons
+
+RUN git clone https://github.com/kyazdani42/nvim-tree.lua \
+    /root/.local/share/nvim/site/pack/plugins/start/nvim-tree.lua
 
 COPY nvim /root/.config/nvim
 
-# RUN nvim --headless \
-#     -c 'autocmd User PackerComplete quitall' \
-#     -c 'PackerSync' \
-#     -c 'qall'
-
-# RUN nvim --headless +PackerSync +qa
-
-# RUN nvim --headless +'autocmd User PackerComplete sleep 100m | qall' +PackerSync
-
-# RUN nvim --headless \
-#   -c "autocmd User PackerCompileDone sleep 100m | quitall" \
-#   -c "PackerSync"
-
-RUN echo "00004"
-
-RUN nvim --headless \
-  -c "autocmd User PackerCompileDone quitall" \
-  -c "PackerSync"
-
-# RUN nvim --headless ' +TSInstall -sync all'
-RUN nvim --headless \
-    ' +TSInstall -sync all' +qa
