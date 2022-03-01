@@ -123,4 +123,10 @@ RUN git clone https://github.com/ilidar/git-tree.nvim \
 RUN git clone https://github.com/chr4/nginx.vim \
     /root/.local/share/nvim/site/pack/plugins/start/nginx.vim
 
+RUN apt-get update && apt-get install -y \
+    clangd-12 && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
+
 COPY nvim /root/.config/nvim
