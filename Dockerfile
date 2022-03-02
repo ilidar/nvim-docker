@@ -57,21 +57,17 @@ RUN cd $HOME/.deps/lua-language-server && \
     cd ../.. && \
     ./3rd/luamake/luamake rebuild
 
-# Bash
-RUN npm i -g bash-language-server
+# Python, bash, dockerfile, yaml
+RUN npm install -g \
+    pyright \
+    yaml-language-server \
+    dockerfile-language-server-nodejs \
+    bash-language-server
 
 # CMake
 RUN pip install cmake-language-server
 
-# Docker
-RUN npm install -g dockerfile-language-server-nodejs
-
-# Python
-RUN npm install -g pyright
-
-# YAML
-RUN npm install -g yaml-language-server
-
 # Telescope dependency
 RUN apt-get update && apt-get install -y \
-    ripgrep
+    ripgrep && \
+    rm -rf /var/lib/apt/lists/*
