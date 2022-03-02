@@ -34,6 +34,10 @@ RUN apt-get update && apt-get install -y \
 RUN update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
 
 # Node
+RUN apt-get update && apt-get install -y \
+    curl && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
 
 RUN apt-get update && apt-get install -y \
