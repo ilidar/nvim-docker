@@ -22,9 +22,6 @@ RUN apt-get update && apt-get install -y \
 RUN git clone --recurse-submodules https://github.com/ilidar/nvim-plugins /opt/nvim-plugins && \
     /opt/nvim-plugins/scripts/install.bash
 
-# nvim-treesitter init
-RUN nvim --headless -c 'TSInstallSync all' -c 'qall'
-
 # Config
 RUN git clone https://github.com/ilidar/nvim-config /opt/nvim-config && \
     /opt/nvim-config/scripts/install.bash
