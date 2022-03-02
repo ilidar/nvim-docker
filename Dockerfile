@@ -24,9 +24,6 @@ RUN mkdir -p /root/.local/share/nvim/site/pack/plugins/opt && \
 RUN git clone https://github.com/nvim-treesitter/nvim-treesitter \
     /root/.local/share/nvim/site/pack/plugins/start/nvim-treesitter
 
-# RUN nvim --headless ' +TSInstallSync all' +qa
-RUN nvim --headless -c 'TSInstallSync all' -c 'qall'
-
 RUN git clone https://github.com/kyazdani42/nvim-web-devicons  \
     /root/.local/share/nvim/site/pack/plugins/start/nvim-web-devicons
 
@@ -122,6 +119,9 @@ RUN git clone https://github.com/ilidar/git-tree.nvim \
 
 RUN git clone https://github.com/chr4/nginx.vim \
     /root/.local/share/nvim/site/pack/plugins/start/nginx.vim
+
+# nvim-treesitter init
+RUN nvim --headless -c 'TSInstallSync all' -c 'qall'
 
 RUN apt-get update && apt-get install -y \
     clangd-12 && \
