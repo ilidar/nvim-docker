@@ -59,7 +59,7 @@ RUN cd $HOME/.deps/lua-language-server && \
     cd ../.. && \
     ./3rd/luamake/luamake rebuild
 
-# Python, bash, dockerfile, yaml, markdown
+# Python, bash, dockerfile, yaml, markdown, json
 RUN npm install -g \
     pyright \
     yaml-language-server \
@@ -67,7 +67,8 @@ RUN npm install -g \
     bash-language-server \
     remark-preset-lint-recommended \
     remark-language-server \
-    remark
+    remark \
+    js-beautify
 
 # CMake
 RUN pip install cmake-language-server
